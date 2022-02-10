@@ -20,6 +20,8 @@ async function run(){
     const database = client.db('foodmart_shop');
     const productCollection = database.collection('products')
     const blogCollection = database.collection('blogs')
+    const reviewCollection = database.collection('reviews')
+
 
     app.get('/products', async (req, res) => {
       const cursor = productCollection.find({})
@@ -30,6 +32,11 @@ async function run(){
       const cursor = blogCollection.find({})
       const blogs = await cursor.toArray();
       res.send(blogs);
+  })
+    app.get('/reviews', async (req, res) => {
+      const cursor = reviewCollection.find({})
+      const reviews = await cursor.toArray();
+      res.send(reviews);
   })
 
   } 
