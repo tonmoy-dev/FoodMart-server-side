@@ -16,7 +16,22 @@ async function run(){
 
   try {
     await client.connect();
-    console.log("database connect")
+    // console.log("database connect")
+    const database = client.db('foodmart_shop');
+    const productCollection = database.collection('products')
+    const blogCollection = database.collection('blogs')
+
+    app.get('/products', async (req, res) => {
+      const cursor = productCollection.find({})
+      const products = await cursor.toArray();
+      res.send(products);
+  })
+    app.get('/blogs', async (req, res) => {
+      const cursor = blogCollection.find({})
+      const blogs = await cursor.toArray();
+      res.send(blogs);
+  })
+
   } 
   finally {
     // await client.close();
