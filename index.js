@@ -7,16 +7,15 @@ const port = process.env.PORT || 5000;
 
 app.use(cors());
 
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.eeauc.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ernrq.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`;
 
-console.log(uri)
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 async function run(){
 
   try {
     await client.connect();
-    // console.log("database connect")
+    console.log("database connected");
     const database = client.db('foodmart_shop');
     const productCollection = database.collection('products')
     const blogCollection = database.collection('blogs')
