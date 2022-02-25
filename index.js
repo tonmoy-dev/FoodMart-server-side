@@ -81,12 +81,6 @@ async function run(){
     res.json(result)
   })
 
-//   userName
-// userEmail
-// reviewDate
-// reviewTime
-// description
-
 // review 
    app.post('/reviews', async(req,res) => {
     const userName = req.body.userName;
@@ -102,9 +96,7 @@ async function run(){
       reviewDate,
       reviewTime,
       description,
-      imgUrl
-
-     
+      imgUrl     
     }
     const result = await reviewCollection.insertOne(review)
     res.json(result)
@@ -127,9 +119,7 @@ async function run(){
       blogTag,
       blogDescription,
       authorName,
-      photoUrl
-
-     
+      photoUrl   
     }
     const result = await addblogCollection.insertOne(addBlog)
     res.json(result)
