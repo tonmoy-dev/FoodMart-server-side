@@ -37,6 +37,15 @@ async function run(){
       const products = await cursor.toArray();
       res.send(products);
   })
+  
+  //single data
+  app.get("/products/:id", async (req, res) => {
+    const id = req.params.id;
+    const query = { _id: ObjectId(id) };
+    console.log(id);
+    const oneProduct = await productCollection.findOne(query);
+    res.json(oneProduct);
+  });
 
   app.post('/products', async(req,res) => {
     const productTitle = req.body.productTitle;
